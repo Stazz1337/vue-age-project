@@ -51,19 +51,18 @@
   padding: 0;
 }
 
-/* Для разрешения 2K и 4K */
-@media only screen and (min-width: 2048px) {
+/* @media only screen and (min-width: 2048px) {
   html {
     zoom: 200%
   }
 }
 
-/* Для разрешения 8K */
+
 @media only screen and (min-width: 7680px) {
   html {
     zoom: 400%
   }
-}
+} */
 
 * {
   font-family: 'Manrope', Arial, sans-serif;
@@ -85,7 +84,7 @@ body {
 
 #app {
   margin: 0 auto;
-  width: 1440px;
+  width: 75%;
 }
 
 a {

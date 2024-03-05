@@ -21,8 +21,7 @@ const showModal = ref(false);
     </div>
     <div class="wrapper-frame">
       <iframe
-        width="100%"
-        height="720"
+        class="frame"
         src="https://www.youtube.com/embed/9TIXPeyUR7c"
         title="Learn English with Adam"
         frameborder="0"
@@ -101,6 +100,7 @@ const showModal = ref(false);
   position: relative;
   overflow: hidden;
   width: 100%;
+  padding-bottom: 55%;
 }
 
 .frame {

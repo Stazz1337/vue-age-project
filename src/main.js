@@ -5,12 +5,15 @@ import './style.css';
 import App from './App.vue';
 import BroadcastPage from './pages/BroadcastPage.vue';
 import Enter from './pages/Enter.vue';
+import Auth from './pages/Auth.vue';
 import NotFound from './pages/NotFound.vue';
 
 const routes = [
   { path: '/', name: 'BroadcastPage', component: BroadcastPage },
   { path: '/enter', name: 'Enter', component: Enter },
+  { path: '/auth', name: 'Auth', component: Auth },
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
+
 ];
 
 const router = createRouter({ history: createWebHistory(), routes });
