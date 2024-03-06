@@ -59,6 +59,12 @@ const props = defineProps({
   border: 1px solid #9d9d9d;
 }
 
+@media screen and (max-width: 768px) {
+  .input {
+    padding: 20px 20px;
+  }
+}
+
 .input::placeholder {
   color: #9d9d9d;
   font-size: 14px;

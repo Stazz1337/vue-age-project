@@ -17,14 +17,23 @@ const props = defineProps({
 
 <style scoped>
 .button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-width: 215px;
-  padding: 20px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
   color: #9d9d9d;
   background-color: transparent;
   border: 1px solid #9d9d9d;
+  height: 60px;
+}
+
+@media screen and (max-width: 768px) {
+  .button {
+    height: 50px;
+  }
 }
 
 .yellow {

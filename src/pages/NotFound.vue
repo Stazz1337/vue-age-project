@@ -23,13 +23,25 @@
   margin: 77px 0 30px;
 }
 
+@media screen and (max-width: 768px) {
+  .logo {
+    display: none;
+  }
+}
+
 .code {
   color: #ffa509;
-  font-size: 350px;
+  font-size: 22vw;
   font-style: normal;
   font-weight: 600;
   line-height: 387px;
   letter-spacing: -12.25px;
+}
+
+@media screen and (max-width: 768px) {
+  .code {
+    font-size: 200px;
+  }
 }
 
 .text {
@@ -42,6 +54,12 @@
   margin-top: -30px;
 }
 
+@media screen and (max-width: 768px) {
+  .text {
+    margin-top: -90px;
+  }
+}
+
 .connect {
   font-size: 24px;
   font-style: normal;
@@ -49,6 +67,7 @@
   line-height: normal;
   letter-spacing: -0.84px;
   margin: 15px 0 30px;
+  text-align: center;
 }
 
 .button {

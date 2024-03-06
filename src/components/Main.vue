@@ -16,7 +16,7 @@ const showModal = ref(false);
         <p class="teacher"><span class="span">Преподаватель:</span>Иванов Иван Иванович</p>
       </div>
       <button class="button" type="button" @click="showModal = true">
-        Покинуть трансляцию <img src="/close.svg" alt="Иконка закрытия" />
+        <span class="button-span">Покинуть трансляцию</span> <img src="/close.svg" alt="Иконка закрытия" />
       </button>
     </div>
     <div class="wrapper-frame">
@@ -37,6 +37,18 @@ const showModal = ref(false);
   padding: 0 70px 50px;
 }
 
+@media screen and (max-width: 1000px) {
+  .main {
+    padding: 0 30px 50px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    padding: 0 10px 40px;
+  }
+}
+
 .wrapper {
   display: flex;
   justify-content: space-between;
@@ -44,9 +56,30 @@ const showModal = ref(false);
   padding: 27px 0 30px;
 }
 
+@media screen and (max-width: 1000px) {
+  .wrapper {
+    padding: 12px 0 15px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    padding: 30px 0;
+  }
+}
+
+
 .wrapper-title {
   display: flex;
   gap: 30px;
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper-title {
+    flex-direction: column;
+    gap: 15px;
+
+  }
 }
 .title {
   font-size: 25px;
@@ -58,6 +91,18 @@ const showModal = ref(false);
   gap: 15px;
 }
 
+@media screen and (max-width: 768px) {
+  .title {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+.date {
+  display: flex;
+  align-items: center;
+}
+
 .teacher {
   font-size: 16px;
   font-style: normal;
@@ -66,6 +111,14 @@ const showModal = ref(false);
   letter-spacing: -0.48px;
   display: flex;
   align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .teacher {
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
+  }
 }
 
 .span {
@@ -81,6 +134,7 @@ const showModal = ref(false);
 .button {
   padding: 12px 15px;
   display: flex;
+  align-items: center;
   gap: 5px;
   border-radius: 8px;
   border: 1px solid #ff2e2e;
@@ -94,6 +148,23 @@ const showModal = ref(false);
   line-height: normal;
   letter-spacing: -0.42px;
   cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 1000px) {
+  .button {
+   width: 130px;
+   margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .button {
+    width: 50px;
+    height: 44px;
+    align-self: flex-start;
+  }
 }
 
 .wrapper-frame {
@@ -111,5 +182,11 @@ const showModal = ref(false);
   right: 0;
   width: 100%;
   height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .button-span {
+    display: none;
+  }
 }
 </style>

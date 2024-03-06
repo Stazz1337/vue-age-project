@@ -39,6 +39,14 @@
   gap: 30px;
 }
 
+@media screen and (max-width: 768px) {
+  .modal-content {
+    min-width: 370px;
+    padding: 40px 10px;
+    margin: 0 10px;
+  }
+}
+
 .title {
   font-size: 24px;
   font-style: normal;
@@ -62,6 +70,12 @@
   background-color: transparent;
   border: 1px solid #9d9d9d;
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .button {
+    min-width: 170px;
+  }
 }
 
 .button-yellow {

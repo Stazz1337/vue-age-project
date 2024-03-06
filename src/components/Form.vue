@@ -1,20 +1,27 @@
 <script setup>
 import Input from './Input.vue';
 import Button from './Button.vue';
+
+const props = defineProps({
+  title: {
+    type: String,
+  },
+});
 </script>
 
 <template>
   <form class="form">
-    <h2 class="title">Авторизация</h2>
+    <img src="/logo.svg" alt="логотип" class="logo" />
+    <h2 class="title">{{ props.title }}</h2>
     <div class="wrapper">
-        <Input label='ФИО' placeholder="Соколова Елена Петровна" name="name" type="text"  />
-        <Input label='Телефон' placeholder="79999999999" name="phone" type="tel" />
+      <slot name="inputs"></slot>
     </div>
+    <slot name="repeat"></slot>
     <div class="wrapper-button">
-        <Button class="yellow">Войти</Button>
-        <Button>Связь с менеджером</Button>
+      <Button class="yellow">Войти</Button>
+      <Button>Связь с менеджером</Button>
     </div>
-    <slot></slot>
+    <slot name="google"></slot>
   </form>
 </template>
 
@@ -28,22 +35,51 @@ import Button from './Button.vue';
   gap: 30px;
   padding: 40px 30px;
   min-width: 500px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .form {
+    min-width: 370px;
+    width: 100%;
+    padding: 30px 10px;
+  }
+}
+
+.logo {
+  position: absolute;
+  top: -100px;
+  left: 35%;
+  display: none;
+  width: 150px;
+  height: 50px;
+}
+
+@media (max-width: 1439px) {
+  .logo {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    left: 30%;
+  }
 }
 
 .title {
-    text-align: center;
+  text-align: center;
 }
 
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .wrapper-button {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 </style>

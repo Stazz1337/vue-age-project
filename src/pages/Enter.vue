@@ -11,7 +11,9 @@
       </h2>
       <p class="teacher"><span class="span">Преподаватель:</span>Иванов Иван Иванович</p>
 
-      <button class="button" type="button" @click="$router.push({ name: 'BroadcastPage' })">Войти</button>
+      <button class="button" type="button" @click="$router.push({ name: 'BroadcastPage' })">
+        Войти
+      </button>
     </div>
   </div>
 </template>
@@ -35,6 +37,14 @@
   justify-content: center;
   gap: 10px;
   position: relative;
+  border-radius: 15px;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 370px;
+    padding: 40px 10px 35px;
+  }
 }
 
 .logo {
@@ -57,6 +67,13 @@
   font-weight: 700;
   line-height: normal;
   letter-spacing: -0.75px;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+ .date {
+    display: block;
+ }
 }
 
 .teacher {
@@ -69,6 +86,7 @@
   gap: 5px;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .span {
@@ -81,13 +99,22 @@
 }
 
 .button {
+  height: 60px;
   min-width: 215px;
-  padding: 15px;
   border-radius: 8px;
   background-color: #ffa509;
   color: #fff;
   border: none;
   cursor: pointer;
   margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .button {
+    height: 50px;
+  }
 }
 </style>

@@ -9,17 +9,14 @@ import Input from '../components/Input.vue';
       <img src="/logo.svg" alt="логотип" class="logo" />
     </div>
     <div class="wrapper-form">
-      <Form title="Авторизация">
-        <template #inputs>
-          <Input label="ФИО" placeholder="Соколова Елена Петровна" name="name" type="text" />
-          <Input label="Телефон" placeholder="79999999999" name="phone" type="tel" />
+      <Form title="Выслали вам код в Whatsapp">
+        <template #inputs> 
+            <Input label='Код авторизации' placeholder="1234" name="code" type="text"/>
         </template>
-        <template #google>
-          <div class="wrapper-google">
-            <div class="separator">Или войдите с помощью</div>
-            <button class="button" type="button">
-              <img src="/google.svg" alt="Google" />Google
-            </button>
+        <template #repeat>
+          <div class="wrapper-repeat">
+            <p class="repeat">Получить код повторно можно будет через 0:30</p>
+            <p class="more">Выслать код еще раз</p>
           </div>
         </template>
       </Form>
@@ -34,9 +31,8 @@ import Input from '../components/Input.vue';
   background: #f2f2f2;
   align-items: center;
   justify-content: center;
+
 }
-
-
 .container {
   display: flex;
   justify-content: center;
@@ -50,9 +46,9 @@ import Input from '../components/Input.vue';
 @media screen and (max-width: 1439px) {
     .container {
         display: none;
-    }   
+    }
+    
 }
-
 .logo {
   width: 281px;
   height: 94.145px;
@@ -111,5 +107,31 @@ import Input from '../components/Input.vue';
   border: 1px solid #9d9d9d;
   background-color: #fff;
   cursor: pointer;
+}
+
+.wrapper-repeat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.repeat {
+  color: #9d9d9d;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.49px;
+}
+
+.more {
+  color: #3965ff;
+  cursor: pointer;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.49px;
 }
 </style>
