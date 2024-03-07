@@ -1,5 +1,4 @@
 <script setup>
-import Input from './Input.vue';
 import Button from './Button.vue';
 
 const props = defineProps({
@@ -7,10 +6,12 @@ const props = defineProps({
     type: String,
   },
 });
+
+const emit = defineEmits(['submit']);
 </script>
 
 <template>
-  <form class="form">
+  <form class="form" @submit.prevent="$emit('submit')">
     <img src="/logo.svg" alt="логотип" class="logo" />
     <h2 class="title">{{ props.title }}</h2>
     <div class="wrapper">
@@ -18,7 +19,7 @@ const props = defineProps({
     </div>
     <slot name="repeat"></slot>
     <div class="wrapper-button">
-      <Button class="yellow">Войти</Button>
+      <Button class="yellow" type="submit">Войти</Button>
       <Button>Связь с менеджером</Button>
     </div>
     <slot name="google"></slot>

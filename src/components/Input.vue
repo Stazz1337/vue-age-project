@@ -1,4 +1,6 @@
 <script setup>
+
+import { defineProps, defineEmits, computed } from 'vue';
 const props = defineProps({
   label: {
     type: String,
@@ -12,19 +14,32 @@ const props = defineProps({
   type: {
     type: String,
   },
+  modelValue: [String, Number],
 });
+
+const emit = defineEmits(['update:modelValue']);
+
+const value = computed({
+ get() {
+    return props.modelValue;
+ },
+ set(newValue) {
+    emit('update:modelValue', newValue);
+ },});
 </script>
 
 <template>
   <div class="wrapper-input">
-    <label class="label" :for="propsname">{{ props.label }}</label>
+    <label class="label" :for="props.label">{{ props.label }}</label>
 
     <input
       class="input"
-      :type="props.text"
+      :type="props.type"
       :id="props.name"
       :name="props.name"
       :placeholder="props.placeholder"
+      :value="modelValue"
+      v-model="value"
       required />
 
     <span class="error"></span>
@@ -75,6 +90,6 @@ const props = defineProps({
 }
 
 .error {
-    display: none;
+  display: none;
 }
 </style>

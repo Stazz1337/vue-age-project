@@ -1,6 +1,32 @@
 <script setup>
 import Form from '../components/Form.vue';
 import Input from '../components/Input.vue';
+import axios from 'axios';
+import { ref } from 'vue';
+
+import { useRouter } from 'vue-router';
+const router = useRouter();
+const name = ref('');
+const phone = ref('');
+
+
+
+async function submit() {
+  try {
+    const response = await axios.post('https://lk.agecompany.ru/api/', {
+      name: name.value,
+      phone: phone.value,
+    });
+    if (response.data.token) {
+      localStorage.setItem('token', response.data.token);
+      router.push('/enter');
+    } else {
+      console.error(error);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
 </script>
 
 <template>
@@ -9,10 +35,20 @@ import Input from '../components/Input.vue';
       <img src="/logo.svg" alt="логотип" class="logo" />
     </div>
     <div class="wrapper-form">
-      <Form title="Авторизация">
+      <Form title="Авторизация" @submit="submit">
         <template #inputs>
-          <Input label="ФИО" placeholder="Соколова Елена Петровна" name="name" type="text" />
-          <Input label="Телефон" placeholder="79999999999" name="phone" type="tel" />
+          <Input
+            label="ФИО"
+            placeholder="Соколова Елена Петровна"
+            name="name"
+            type="text"
+            v-model="name" />
+          <Input
+            label="Телефон"
+            placeholder="79999999999"
+            name="phone"
+            type="tel"
+            v-model="phone" />
         </template>
         <template #google>
           <div class="wrapper-google">
@@ -36,7 +72,6 @@ import Input from '../components/Input.vue';
   justify-content: center;
 }
 
-
 .container {
   display: flex;
   justify-content: center;
@@ -48,9 +83,9 @@ import Input from '../components/Input.vue';
 }
 
 @media screen and (max-width: 1439px) {
-    .container {
-        display: none;
-    }   
+  .container {
+    display: none;
+  }
 }
 
 .logo {

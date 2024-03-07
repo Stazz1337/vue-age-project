@@ -9,16 +9,33 @@ import Auth from './pages/Auth.vue';
 import CheckCode from './pages/CheckCode.vue';
 import NotFound from './pages/NotFound.vue';
 
-const routes = [
-  { path: '/', name: 'BroadcastPage', component: BroadcastPage },
-  { path: '/enter', name: 'Enter', component: Enter },
-  { path: '/auth', name: 'Auth', component: Auth },
-  { path: '/check-code', name: 'CheckCode', component: CheckCode },
-  { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
+function isAuthenticated() {
+  return localStorage.getItem('token') !== null;
+}
 
+
+const routes = [
+  { path: '/', name: 'BroadcastPage', component: BroadcastPage, meta: { requiresAuth: true } },
+  { path: '/enter', name: 'Enter', component: Enter, meta: { requiresAuth: true } },
+  { path: '/auth', name: 'Auth', component: Auth },
+  { path: '/check-code', name: 'CheckCode', component: CheckCode, meta: { requiresAuth: true } },
+  { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
 ];
 
+
 const router = createRouter({ history: createWebHistory(), routes });
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (isAuthenticated()) {
+      next();
+    } else {
+      next('/auth');
+    }
+  } else {
+    next();
+  }
+});
 
 const app = createApp(App);
 

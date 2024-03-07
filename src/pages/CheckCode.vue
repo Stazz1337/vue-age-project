@@ -1,6 +1,30 @@
 <script setup>
 import Form from '../components/Form.vue';
 import Input from '../components/Input.vue';
+
+import { ref } from 'vue';
+
+const code = ref('');
+
+import { useRouter } from 'vue-router';
+const router = useRouter();
+
+async function submit() {
+  try {
+    const response = await axios.post('https://lk.agecompany.ru/api/', {
+      code: code.value,
+    });
+    if (response.data.token) {
+      localStorage.setItem('token', response.data.token);
+      router.push('/enter');
+    } else {
+      console.error(error);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 </script>
 
 <template>
@@ -9,9 +33,9 @@ import Input from '../components/Input.vue';
       <img src="/logo.svg" alt="логотип" class="logo" />
     </div>
     <div class="wrapper-form">
-      <Form title="Выслали вам код в Whatsapp">
+      <Form title="Выслали вам код в Whatsapp" @submit="submit">
         <template #inputs> 
-            <Input label='Код авторизации' placeholder="1234" name="code" type="text"/>
+            <Input label='Код авторизации' placeholder="1234" name="code" type="text" v-model="code"/>
         </template>
         <template #repeat>
           <div class="wrapper-repeat">
